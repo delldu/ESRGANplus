@@ -6,6 +6,8 @@ import numpy as np
 import torch
 import architecture as arch
 
+import pdb
+
 model_path = sys.argv[1]  # pretrained_models/nESRGANplus.pth pretrained_models/RRDB_ESRGAN_x4.pth OR pretrained_models/RRDB_PSNR_x4.pth
 device = torch.device('cuda')  # if you want to run on CPU, change 'cuda' -> cpu
 # device = torch.device('cpu')
@@ -20,7 +22,7 @@ for k, v in model.named_parameters():
     v.requires_grad = False
 model = model.to(device)
 
-print('Model path {:s}. \nTesting...'.format(model_path))
+print('Model path {:s}. \nTesting...'.format(model_path)) #  test_image/pretrained_models/nESRGANplus.pth
 
 idx = 0
 for path in glob.glob(test_img_folder):

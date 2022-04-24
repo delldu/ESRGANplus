@@ -12,6 +12,8 @@ from data.util import bgr2ycbcr
 from data import create_dataset, create_dataloader
 from models import create_model
 
+import pdb
+
 # options
 parser = argparse.ArgumentParser()
 parser.add_argument('-opt', type=str, required=True, help='Path to options JSON file.')
@@ -32,6 +34,8 @@ for phase, dataset_opt in sorted(opt['datasets'].items()):
 
 # Create model
 model = create_model(opt)
+
+pdb.set_trace()
 
 for test_loader in test_loaders:
     test_set_name = test_loader.dataset.opt['name']

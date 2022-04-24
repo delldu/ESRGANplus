@@ -2,6 +2,8 @@ from collections import OrderedDict
 import torch
 import torch.nn as nn
 
+import pdb
+
 ####################
 # Basic blocks
 ####################
@@ -204,6 +206,7 @@ class ResidualDenseBlock_5C(nn.Module):
             norm_type=None, act_type='leakyrelu', mode='CNA', noise_input=True):
         super(ResidualDenseBlock_5C, self).__init__()
         # gc: growth channel, i.e. intermediate channels
+        # noise_input -- True
         self.noise = GaussianNoise() if noise_input else None
         self.conv1x1 = conv1x1(nc, gc)
         self.conv1 = conv_block(nc, gc, kernel_size, stride, bias=bias, pad_type=pad_type, \
@@ -214,7 +217,7 @@ class ResidualDenseBlock_5C(nn.Module):
             norm_type=norm_type, act_type=act_type, mode=mode)
         self.conv4 = conv_block(nc+3*gc, gc, kernel_size, stride, bias=bias, pad_type=pad_type, \
             norm_type=norm_type, act_type=act_type, mode=mode)
-        if mode == 'CNA':
+        if mode == 'CNA': # True
             last_act = None
         else:
             last_act = act_type
