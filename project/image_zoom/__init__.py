@@ -1,4 +1,4 @@
-"""Image/Video CURL Package."""  # coding=utf-8
+"""Image/Video Zoom Package."""  # coding=utf-8
 #
 # /************************************************************************************
 # ***
